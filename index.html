@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAEP · Estudio contable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff5f8;--surface:#fff;--ink:#4a2336;--muted:#8a6677;--line:#f6d5e1;--navy:#fbd3e2;--hero2:#fff;--gold:#c2336b;--c-fin:#8e2c5c;--c-imp:#e0679a;--c-f22:#b4235f;--on-navy:#5a1f3a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0508;--surface:#000;--ink:#ffe9f1;--muted:#c7a0b2;--line:#3a1f2c;--navy:#4a1630;--hero2:#000;--gold:#f06a9f;--c-fin:#8e2c5c;--c-imp:#e0679a;--c-f22:#b4235f;--on-navy:#ffe3ee;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0508;--surface:#000;--ink:#ffe9f1;--muted:#c7a0b2;--line:#3a1f2c;--navy:#4a1630;--hero2:#000;--gold:#f06a9f;--c-fin:#8e2c5c;--c-imp:#e0679a;--c-f22:#b4235f;--on-navy:#ffe3ee;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,Arial,sans-serif}
+h1,h2,h3,.brand b{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.01em}
+.layout{display:grid;grid-template-columns:1fr 320px;min-height:100vh}
+main{min-width:0}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 48px;border-bottom:1px solid var(--line);background:var(--surface)}
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none}
+.brand svg{width:54px;height:54px;color:var(--gold)}
+.brand b{font-size:30px;line-height:1;letter-spacing:.14em;display:block}
+.brand small{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+nav{display:flex;gap:26px;font-size:14px}
+nav a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+nav a:hover{border-color:var(--gold)}
+.tg{display:flex;padding:3px;gap:2px;background:var(--surface);color:var(--ink);border:1px solid var(--gold);font:500 13px Inter,system-ui,sans-serif;cursor:pointer;border-radius:999px;white-space:nowrap}
+.tg .o{padding:6px 12px;border-radius:999px;color:var(--muted)}.tg .o i{font-style:normal}
+.tg[data-m="light"] .l,.tg[data-m="dark"] .k{background:var(--gold);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.btn.out{background:transparent;color:var(--gold)}.btn.out:hover{background:var(--gold);color:#fff}
+.tel{color:var(--muted);font-size:15px;margin:0}.tel b{color:var(--ink)}
+.clock{border:1px solid var(--line);padding:14px;text-align:center;margin-bottom:24px}
+.clock b{display:block;font:600 36px "Cormorant Garamond",Georgia,serif;color:var(--gold);letter-spacing:.06em;font-variant-numeric:tabular-nums;line-height:1.1}
+.clock span{font-size:13px;color:var(--muted);text-transform:capitalize}
+@media (max-width:520px){.tg .o i{display:none}}
+.hero{background:linear-gradient(135deg,var(--navy),var(--hero2));color:var(--on-navy);padding:90px 48px;position:relative;overflow:hidden}
+.hero svg.mark{position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:420px;height:420px;color:var(--gold);opacity:.14}
+.hero .eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-size:12px;margin:0 0 18px}
+.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.08;margin:0 0 20px;max-width:720px}
+.hero p{max-width:560px;color:inherit;opacity:.85;margin:0 0 32px}
+.btn{display:inline-block;background:var(--gold);color:#fff;padding:13px 28px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;border:1px solid var(--gold)}
+.btn.ghost{background:transparent;color:var(--on-navy);margin-left:10px}
+section{padding:64px 48px;border-bottom:1px solid var(--line)}
+section h2{font-size:38px;margin:0 0 8px}
+.rule{width:56px;height:2px;background:var(--gold);margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);padding:26px;border-top:3px solid var(--gold)}
+.card h3{font-size:24px;margin:0 0 8px}.card p{margin:0;color:var(--muted);font-size:15px}
+.stats{display:flex;flex-wrap:wrap;gap:40px;margin-top:28px}
+.stats div b{font-family:"Cormorant Garamond",Georgia,serif;font-size:40px;color:var(--gold);display:block;line-height:1}
+.stats span{font-size:13px;color:var(--muted)}
+footer{padding:36px 48px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+aside{background:var(--surface);border-left:1px solid var(--line);padding:28px 22px;position:sticky;top:0;height:100vh;overflow-y:auto;align-self:start}
+aside h3{font-size:26px;margin:0 0 2px}
+aside .sub{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-head b{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;text-transform:capitalize}
+.cal-head button{background:none;border:1px solid var(--line);color:var(--ink);width:30px;height:30px;cursor:pointer;font-size:16px}
+.cal-head button:hover{border-color:var(--gold)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:13px}
+.cal .dw{color:var(--muted);font-size:11px;padding:4px 0;letter-spacing:.08em}
+.cal .d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;border:1px solid transparent}
+.cal .d.ev{font-weight:600;color:#fff}
+.cal .d.fin{background:var(--c-fin)}.cal .d.imp{background:var(--c-imp);color:#fff}.cal .d.f22{background:var(--c-f22)}
+.cal .d.today{outline:2px solid var(--gold);outline-offset:1px}
+.legend{margin:18px 0 0;padding:0;list-style:none;font-size:13px}
+.legend li{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.legend i{width:14px;height:14px;flex:none}
+.legend em{margin-left:auto;font-style:normal;color:var(--muted);font-size:12px;white-space:nowrap}
+.note{font-size:12px;color:var(--muted);margin-top:14px}
+@media (max-width:980px){.layout{grid-template-columns:1fr}aside{position:static;height:auto;border-left:0;border-top:3px solid var(--gold)}header,.hero,section,footer{padding-left:24px;padding-right:24px}nav{display:none}.brand svg{width:44px;height:44px}.brand b{font-size:24px}.hero svg.mark{width:260px;height:260px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<main>
+<header>
+<a class="brand" href="#inicio" aria-label="MAEP Estudio contable">
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M22 42 L23 13 L42 28 Q50 26 58 28 L77 13 L78 42 Q85 54 78 65 Q70 85 50 87 Q30 85 22 65 Q15 54 22 42 Z"/>
+<path d="M27 24 L36 31 M73 24 L64 31"/>
+<path d="M50 28 V40 M43 30 L45 39 M57 30 L55 39 M35 36 Q40 40 42 46 M65 36 Q60 40 58 46"/>
+<path d="M31 51 Q38 44 45 51 Q38 55 31 51 Z M55 51 Q62 44 69 51 Q62 55 55 51 Z"/>
+<circle cx="38" cy="50" r="1.6" fill="currentColor"/><circle cx="62" cy="50" r="1.6" fill="currentColor"/>
+<path d="M50 48 V57 M46 60 H54 L50 65 Z M50 65 V69 M50 69 Q46 73 42 70 M50 69 Q54 73 58 70"/>
+<path d="M30 64 L12 60 M30 68 L12 70 M70 64 L88 60 M70 68 L88 70"/>
+</svg>
+<span><b>MAEP</b><small>Estudio contable</small></span>
+</a>
+<nav><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></nav>
+<button class="tg" id="tg" type="button"><span class="o l">☀ <i>Claro</i></span><span class="o k">☾ <i>Oscuro</i></span></button>
+</header>
+
+<div class="hero" id="inicio">
+<svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 42 L23 13 L42 28 Q50 26 58 28 L77 13 L78 42 Q85 54 78 65 Q70 85 50 87 Q30 85 22 65 Q15 54 22 42 Z"/><path d="M50 28 V40 M43 30 L45 39 M57 30 L55 39"/><path d="M31 51 Q38 44 45 51 Q38 55 31 51 Z M55 51 Q62 44 69 51 Q62 55 55 51 Z"/><path d="M46 60 H54 L50 65 Z M50 65 V69 M50 69 Q46 73 42 70 M50 69 Q54 73 58 70"/></svg>
+<p class="eyebrow">Contable · Tributaria · Laboral</p>
+<h1>Rigor, claridad y confianza en cada balance.</h1>
+<p>Asesoría contable, tributaria y laboral para emprendedores y empresas de todo Chile. Atención cercana, personalizada y orientada al crecimiento de cada negocio, pyme y empresa.</p>
+<a class="btn" href="#contacto">Solicitar asesoría</a><a class="btn ghost" href="#servicios">Ver servicios</a>
+</div>
+
+<section id="servicios">
+<h2>Nuestros servicios</h2><div class="rule"></div>
+<div class="grid">
+<div class="card"><h3>Contabilidad</h3><p>Contabilidad mensual, libros, conciliaciones y estados financieros al día.</p></div>
+<div class="card"><h3>Auditoría</h3><p>Revisión independiente de cuentas y procesos para dar certeza a su gestión.</p></div>
+<div class="card"><h3>Impuestos</h3><p>Declaraciones mensuales y anuales, incluido el Formulario 22, y planificación tributaria.</p></div>
+<div class="card"><h3>Remuneraciones</h3><p>Liquidaciones, contratos y pago oportuno de imposiciones.</p></div>
+</div>
+</section>
+
+<section id="nosotros">
+<h2>Nosotros</h2><div class="rule"></div>
+<p style="max-width:680px;color:var(--muted)">MAEP es un estudio contable que combina precisión técnica con trato personal. Trabajamos con orden, confidencialidad y plazos claros, para que usted se dedique a hacer crecer su negocio.</p>
+<div class="stats"><div><b>100%</b><span>Cumplimiento de plazos</span></div><div><b>+10</b><span>Años de experiencia</span></div><div><b>24 h</b><span>Respuesta a consultas</span></div></div>
+</section>
+
+<section id="contacto">
+<h2>Contacto</h2><div class="rule"></div>
+<p style="color:var(--muted);max-width:560px">Escríbanos y coordinemos una reunión inicial sin costo.</p>
+<div class="actions">
+<a class="btn" href="https://wa.me/56951848232" target="_blank" rel="noopener">WhatsApp</a>
+<a class="btn out" href="mailto:me.contaempresa@gmail.com">Correo</a>
+<a class="btn out" href="https://www.instagram.com/maep.contaempresa/" target="_blank" rel="noopener">Instagram</a>
+</div>
+<p class="tel"><b>Teléfono:</b> +56 9 5184 8232 · <b>Correo:</b> me.contaempresa@gmail.com</p>
+</section>
+
+<footer><span>© <span id="yr"></span> MAEP · Estudio contable</span><span>Contaduría y auditoría</span></footer>
+</main>
+
+<aside aria-label="Calendario de pagos">
+<h3>Hora en Chile</h3>
+<p class="sub">Santiago de Chile</p>
+<div class="clock"><b id="hora">--:--:--</b><span id="fecha"></span></div>
+<h3>Calendario</h3>
+<p class="sub">Mes actual</p>
+<div class="cal-head"><button id="prev" aria-label="Mes anterior">‹</button><b id="mes"></b><button id="next" aria-label="Mes siguiente">›</button></div>
+<div class="cal" id="cal"></div>
+
+</aside>
+</div>
+<script>
+(function(){
+var M=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+var DW=["L","M","M","J","V","S","D"];
+function cl(){var p={};new Intl.DateTimeFormat("es-CL",{timeZone:"America/Santiago",year:"numeric",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});return p}
+var n=cl(),y=+n.year,m=+n.month-1;
+document.getElementById("yr").textContent=y;
+function render(){
+var cal=document.getElementById("cal"),first=new Date(y,m,1),last=new Date(y,m+1,0).getDate();
+var off=(first.getDay()+6)%7,h="",T=cl();
+DW.forEach(function(d){h+='<div class="dw">'+d+'</div>'});
+for(var i=0;i<off;i++)h+='<div></div>';
+for(var d=1;d<=last;d++){
+var c="d";
+if(d===+T.day&&m===+T.month-1&&y===+T.year)c+=" today";
+h+='<div class="'+c+'">'+d+'</div>';
+}
+cal.innerHTML=h;
+document.getElementById("mes").textContent=M[m]+" "+y;
+}
+document.getElementById("prev").onclick=function(){m--;if(m<0){m=11;y--}render()};
+document.getElementById("next").onclick=function(){m++;if(m>11){m=0;y++}render()};
+render();
+var r=document.documentElement,b=document.getElementById("tg");
+function setT(t){r.setAttribute("data-theme",t);b.setAttribute("data-m",t);b.setAttribute("aria-label",t==="dark"?"Modo oscuro activo. Cambiar a claro":"Modo claro activo. Cambiar a oscuro")}
+function tick(){var p=cl();document.getElementById("hora").textContent=p.hour+":"+p.minute+":"+p.second;document.getElementById("fecha").textContent=new Intl.DateTimeFormat("es-CL",{timeZone:"America/Santiago",weekday:"long",day:"numeric",month:"long"}).format(new Date())}
+tick();setInterval(tick,1000);
+var cur=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+try{var s=localStorage.getItem("maep-theme");if(s)cur=s}catch(e){}
+setT(cur);
+b.onclick=function(){cur=cur==="dark"?"light":"dark";setT(cur);try{localStorage.setItem("maep-theme",cur)}catch(e){}};
+})();
+</script>
+</body>
+</html>
